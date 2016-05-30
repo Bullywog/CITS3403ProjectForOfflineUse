@@ -13,6 +13,9 @@ window.addEventListener("keydown", function(e) {
     }
 } , false);
 
+var apiSettings = {
+    server: 'bacterialbattles.herokuapp.com'
+};
 /*Sounds structure only needed when active network connection
 Taken from [2] http://cssdeck.com/labs/classic-snake-game-with-html5-canvas*/
 var mainMusic = document.getElementById("main_music"),
@@ -23,7 +26,7 @@ var mainMusic = document.getElementById("main_music"),
     highestscore =0;
 
 var xhr = new XMLHttpRequest();//New http request for using the api
-xhr.open('GET', 'http://localhost:3000/api/user_data', true);//Build the request
+xhr.open('GET', apiSettings.server+'/api/user_data', true);//Build the request
 
 
 xhr.send();//Send the request
@@ -37,7 +40,7 @@ function processRequest(e) {//Processing the first request to find the users use
         username = response.username//Setting the username for the program
         if (username!=[]){//New request for getting user score
             getHighscore = new XMLHttpRequest()
-            getHighscore.open('GET', 'http://localhost:3000/api/highscores/'+username, true);
+            getHighscore.open('GET', apiSettings.server+'/api/highscores/'+username, true);
             getHighscore.send()
             getHighscore.addEventListener("readystatechange",getScore,false)//Event listener to then process that score
         }
@@ -56,13 +59,13 @@ function getScore(e) {//Checks if user has a score in database. If not posts a s
 
 function pushScore(score){//Send put request for when user does have score in database
     postHighscore = new XMLHttpRequest()
-    postHighscore.open('PUT', 'http://localhost:3000/api/highscores/'+username, true);
+    postHighscore.open('PUT', apiSettings.server+'/api/highscores/'+username, true);
     postHighscore.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     postHighscore.send('score='+score)
 }
 function postScore(score){//Send post request for when user doesnt have score in database
     postHighscore = new XMLHttpRequest()
-    postHighscore.open('POST', 'http://localhost:3000/api/highscores/', true);
+    postHighscore.open('POST', apiSettings.server+'/api/highscores/', true);
     postHighscore.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     postHighscore.send('score=0')
 
