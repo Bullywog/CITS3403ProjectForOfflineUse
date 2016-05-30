@@ -2,7 +2,7 @@ var request = require('request');
 
 
 var apiSettings = {
-	server: 'bacterialbattles.herokuapp.com'
+	server: 'http://bacterialbattles.herokuapp.com'
 };
 
 var renderScorePage = function(req,res, responseBody){
