@@ -1,0 +1,51 @@
+doctype html
+html
+head
+	title Bacterial Battles
+	link(rel='stylesheet', href='/bootstrap-3.3.6-dist/css/bootstrap.css')
+	link(rel='stylesheet', href='/stylesheets/style.css')
+	link(rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css")
+	script(type="text/javascript" src="javascripts/setActive.js")
+	script(scr='/javascripts/jquery-2.2.3.min.js')
+	script(scr='/bootstrap-3.3.6-dist/js/bootstrap.min.js')
+body
+	#main-wrapper
+		header
+			#banner
+				// need to fix href below
+				a.logo(href='/home', title='HTML5') 
+				img(src='/images/Banner.png', alt='Website Logo')
+			nav.primary
+				ul#nav
+					li
+						a(href='/home') Home
+					li
+						a(href='/about') Game Rules
+					li
+						a(href='/game') Game
+					li
+						a(href='/highscores') Highscores
+					li
+						a(href='/comments') Comments
+					li
+						a(href='/authors') Authors
+					li
+						a(href='/design') Design
+					li
+						a(href='/testing') Testing
+					li
+						a(href='/references') References
+					li#signin
+						if(typeof(user)==='undefined')
+							a.signin(href='/signin') 		Sign in
+						else
+							a.signin(href='/signout') 		Sign out
+
+		.container
+			block content
+		footer
+			.row
+				.col-xs-12
+					p
+						script(type="text/javascript" src="javascripts/lastModified.js")
+					small CITS3401 Agile Web Design Express App

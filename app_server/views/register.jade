@@ -1,0 +1,46 @@
+doctype html
+html
+  head
+    title Dashboard :  Register
+    link(rel='stylesheet', href='//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css')
+    link(rel='stylesheet', href='stylesheets/style.css')
+  body
+    .login.well
+      h1  User Register Welcome aboard!
+      hr
+      form(id='register-form', method='POST', action='/signup', data-toggle="validator")
+        .form-group
+          label(for='firstName') First Name
+          input(type='text', name='firstName', class='form-control',
+            id='firstName', placeholder='Enter first name', 
+            required, autofocus)
+        .form-group
+          label(for='lastName') Last Name
+          input(type='text', name='firstName', class='form-control',
+            id='lastName', placeholder='Enter last name', required)
+        .form-group
+          label(for='username') Username
+          input(type='text', name='username', class='form-control', 
+            id='username', placeholder='Enter username', required)
+        .form-group
+          label(for='password') Password
+          input(type='password', name='password', class='form-control', 
+            id='password', placeholder='Enter password', required)
+        .form-group
+          label(for='checkpassword') Confirm Password
+          input(type='password', name='checkpassword', class='form-control', 
+            id='checkpassword', placeholder='Confirm password', required)
+        .form-group
+          label(for='email') Email
+          input(type='email', name='email', class='form-control', 
+            id='email', placeholder='Enter email', required)    
+        .form-group
+          label(for='checkemail') Confirm Email
+          input(type='email', name='checkemail', class='form-control', 
+            id='checkemail', placeholder='Confirm email', required )
+        .form-group
+          button.btn.btn-default Register
+          a(href="/signin") Or Login
+        #message
+          if message
+            h1.text-center.error-message #{message}

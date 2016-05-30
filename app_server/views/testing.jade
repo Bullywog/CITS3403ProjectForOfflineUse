@@ -1,0 +1,25 @@
+extend layout
+
+block content
+	.content-wrap.group
+		section#design-content
+			h1  Testing and Validation
+			article.design.group
+				.blockp
+					h2 Testing the API using postman
+					p
+						| The majority of API call testing was done using Postman, a Google Chrome App with the functionality required for correctly testing a server, as it gave us the ability to formulae http requests to specific URLs. The advantage of this approach to testing meant that we were able to specify the type of http requests, be it POST, PUT, GET etc. In addition, the body of the request could be specified allowing for data to be posted to the database through the API calls in postman.
+					p
+						img(src='images/postman1.png', alt='Picture of postman example 1' width="700")
+					p(align='center') Figure 1: Postman example of POST request for comment
+					p
+						| Due to careful planning and design considerations of the API, we had mapped out the use cases along with the URLs we expected those uses to use. The advantage of this is that in testing these became our test cases for example; a call to the API with a malformed URL like api/scores should correctly return a 404-response code. For our specific API there were a limited number of outcomes expected from each call. A post call for example would either result in 200 success indicating that data was added to the database successfully or 400 indicating that the data was unable to be uploaded properly.&nbsp; For an update to a score, a successful put would result in a success response code and a failure should be a 404 indicating that the required document could not be found in the database, and so no update was performed.
+					p
+						img(src='images/postman2.png', alt='Picture of postman example 2' width="700")
+					p(align='center') Figure 2: Postman example highscore GET
+					p
+						| The API is structured such that it responds with an error code as well as a JSON object containing whatever data was collected from by the request. This is useful for checking the returned data from the database and ensuring that the model was working correctly. Using this testing environment and methodology was a crucial step in the application construction as it enabled us to test the API before implementing it completely into the website. When it was determined that the API was working correctly, implementation was a lot easier, as error checking meant we were better able to isolate issues to either forming the request before it is send to the API or dealing with the data that is returned by the API.
+
+					h2 Deployment of the website
+					p
+						| In order to fully deploy the website, small changes would need to be made. Notably the current references to the database are using the locally running test database. Putting this site one the world wide web would require those references to be changed to using the DBURI of an online mongodb such as the one supplied by mongolabs. &nbsp;After this the project could be pushed to a Heroku project through git, or alternatively a server on Microsoft Azure, both of which would be accessible and usable on the internet.

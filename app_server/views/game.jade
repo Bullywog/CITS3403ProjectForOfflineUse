@@ -1,0 +1,30 @@
+extends layout
+
+block content
+   .content-wrap.group
+      section#main-game
+        h1#game Battle of the Bacteria
+        article.posts.group
+          div
+            p#rulePrompt
+              | Welcome #{user} Unsure or can't rember how to play?
+              a(href='/about')    Read the Rules
+              br
+              |                         Note: if you want to play with sound please connect to the internet
+          div
+            canvas#canvas
+            script(type='text/javascript', src='javascripts/snakeGame.js')
+            // Audio Taken from [2] http://cssdeck.com/labs/classic-snake-game-with-html5-canvas
+            audio#main_music(loop='', preload='auto')
+              // Taken from http://cssdeck.com/labs/classic-snake-game-with-html5-canvas
+              source(src='http://dl.dropbox.com/u/26141789/canvas/snake/main.mp3', type='audio/mp3')
+              source(src='http://dl.dropbox.com/u/26141789/canvas/snake/main.ogg', type='audio/ogg')
+              //
+                Taken from http://sampleswap.org/artist/canton
+                <source src="http://sampleswap.org/mp3/artist/2/canton_303-vs-909-160.mp3" type="audio/mp3"/>
+            audio#gameOver(preload='auto')
+              source(src='http://dl.dropbox.com/u/26141789/canvas/snake/go.mp3', type='audio/mp3')
+              source(src='http://dl.dropbox.com/u/26141789/canvas/snake/go.ogg', type='audio/ogg')
+            audio#food(preload='auto')
+              source(src='http://dl.dropbox.com/u/26141789/canvas/snake/food.mp3', type='audio/mp3')
+              source(src='http://dl.dropbox.com/u/26141789/canvas/snake/food.ogg', type='audio/ogg')

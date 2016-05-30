@@ -1,0 +1,39 @@
+extends layout
+
+block content
+	.content-wrap.group
+		section#comment-content
+			h1 Score Leaderboard
+			br
+			.datagrid
+				table
+					thead
+						tr
+							th.user 	Username
+							th.score 	Score	
+							th.time 	Time
+					tbody
+						for highscore, i in highscores
+							if i === 0
+								tr.first(style='background: rgba(242,215,50,0.6);')
+									td  #{highscore.user}
+									td  #{highscore.score}
+									td  #{highscore.timeset}
+							else if i === 1
+								tr(style='background: rgba(160,160,160,0.6);')
+									td  #{highscore.user}
+									td  #{highscore.score}
+									td  #{highscore.timeset}
+							else if i === 2
+								tr(style='background: rgba(223,182,103,0.6);')
+									td  #{highscore.user}
+									td  #{highscore.score}
+									td  #{highscore.timeset}
+							else	
+								tr
+									td  #{highscore.user}
+									td  #{highscore.score}
+									td  #{highscore.timeset}
+
+
+

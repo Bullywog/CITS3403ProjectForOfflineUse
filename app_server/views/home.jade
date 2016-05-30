@@ -1,0 +1,58 @@
+extends layout
+
+block content
+  .content-wrap.group
+      section#main-content
+        h1  Bacterial Battles
+        article.posts.group
+          div
+            h2.heading A complex micrososm
+            p
+              | Bacteria are microscopic single-celled organisms that thrive in diverse environments.
+              | They can live within soil, in the ocean and inside the human gut.
+              | Humans' relationship with bacteria is complex. Sometimes they lend a helping hand, by curdling milk into yogurt, or helping with our digestion.
+              | At other times they are destructive, causing diseases like pneumonia and MRSA.
+            h2.heading Types of Bacteria
+            small
+              // When clicked, Set active navigation bar doesnt work anymore..
+              | Information adapted from 
+              a(href='/references/#15') [15]
+              |  and all images from 
+              a(href='/refereneces/#16') [16]
+            p
+              // Same id's used to keep maintanability of page
+              .info-container
+                .left
+                  img(src='images/cocci.jpg', alt='Picture of Coccus /')
+                .right
+                  h3.subheading Coccus
+                  p
+                    | Cocci are round, spherical-shaped bacteria. They can occur as a single bacterium or be arranged in a pair, chain or cluster of bacteria depending on which type of coccus it is. Staph aureus, a common coccus can often be found in the nose and on the skin without causing disease, but it is also responsible for causing conditions such as boils, pneumonia and meningitis.
+              .info-container
+                .left
+                  img(src='images/bacillie.jpg', alt='Picture of Bacillus /')
+                .right
+                  h3.subheading Bacillus
+                  p.left
+                    | Bacilli are rod-shaped bacteria that look like cylinders, arranged singly or in chains. Some rod-shaped bacteria such as Escherichia live peacefully in your intestinal tract without causing disease. Whilst other rod-shaper bacteria such as Corynebacterium diphtheria or Bacillus anthrac enter the body via broken skin, ingestion or inhalation and can cause a thick coating on the back of the nose and throat, making it difficult to swallow or breathe, followed by swelling of the neck and potentially death.
+              .info-container
+                .left
+                  img.left(src='images/vibrio.png', alt='Picture of Vibrio /')
+                .right
+                  h3.subheading Vibrio
+                  p.left
+                    | Vibrios are comma-shaped bacteria that look similar to curved rods and are one of three spiral-like shape bacteria, typically found in aquatic environments [15]. A great example of this is Vibrio cholera which causes an intestinal infection known as Cholera. Transmitted by drinking contaminated water, Cholera causes server diarrhoea, dehydration, and if not treated promptly even death.
+              .info-container
+                .left
+                  img.left(src='images/sparillium.jpg', alt='Picture of Spirillum /')
+                .right
+                  h3.subheading Spirillum
+                  p.left
+                    | Spirilla are another subgroup of bacteria with a more rigid spiral shape. Bacteria of this form include, Campylobacter jejuni a diarrhoea causing bacteria acquired from poor sanitation or by cooking raw or uncooked poultry, and Helicobacter pylori which depending on the person may cause stomach inflammation and ulcers or even no symptoms at all.
+              .info-container
+                .left
+                  img.left(src='images/spirochete.jpg', alt='Picture of Spirochete /')
+                .right
+                  h3.subheading Spirochete
+                  p
+                    | Spirochetes are long, thin and flexible corkscrew-shaped bacteria. Two well-known spirochetes that cause disease in humans are Treponema pallidum and Borrelia burgdorferi. The first causes the sexually transmitted disease syphilis and the latter Lyme disease through infected tick bites. Both cause rashes amongst other symptoms, and if left untreated can have serious health implications.

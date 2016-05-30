@@ -1,0 +1,15 @@
+extends layout
+ 
+block content
+	.content-wrap.group
+		section#comment-content
+			h1.center Add a new comment
+			article.newComment.group
+				form(name="add-comment",action="http://localhost:3000/api/comments" method="post")
+					div.inputComment
+						span.label Description
+						textarea(class="area" name="comment", cols="90", rows="15", placeholder="Enter comment...")
+					div.actionComment
+						input(type="submit" class="btn btn-default addComment", value="Add New Comment")
+				a(href='/comments')
+					button(type="button" class="btn btn-default addComment") Back To Comments

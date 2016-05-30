@@ -1,0 +1,31 @@
+extends layout
+
+block content
+	.content-wrap.group
+		section#comment-content
+			h1 Welcome
+			h3 If you want to let us know of any issues, bugs, or just want to leave a comment, feel free to do so below:
+			article.comments.group
+				p #{ErrorMessage}
+				for comment in comments
+					div.comment
+						div.details
+							button.btn.btn-default(type='button' disabled='disabled')
+								i(class="fa fa-user")	#{comment.user}
+
+
+							| &nbsp;
+
+							button(class="btn.btn-default pull-right", type='button' disabled='disabled')
+								i(class="fa fa-clock-o")	#{comment.posted}
+
+						p.info  #{comment.comment}
+					br
+				form(action='/comment/new')
+					button(type="submit" class="btn btn-default addComment") Add Comment
+				p Please note that you have to be a registered user to post a comment
+
+
+
+
+

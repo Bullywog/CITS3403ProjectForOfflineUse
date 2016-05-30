@@ -1,0 +1,227 @@
+extend layout
+
+block content
+	.content-wrap.group
+		section#design-content
+			h1  Design and Architecture Decisions
+			article.design.group
+				.blockp
+					h2 Architecture:
+					p.followon This website uses a full stack MEAN architecture, which consists of
+					ul.bigger
+						li
+							strong Mongo
+							| : A NoSQL, document database used to store and serve data to Node, in a fast, scalable manner
+						li
+							strong Express
+							| : NodeJS server framework that runs the webserver handling requests from the client end. Used for routing, session support, templating etc.
+						li
+							strong Angular
+							| : Front end framework that presents the data on the client side
+						li
+							strong Node.js
+							| : Server side run time environment, that supports event driven architecture and asynchronous I/O
+					p.followon
+						| Reason being is that all MEAN components are written in JavaScript, which ensures maintainability of the site and also allows project to be easily contained and well documented. Initially a generic directory structure for the project was built using an npm library called Express-generator. This created the skeleton structure of the project, with has since been changed. An overview of the website structure as it currently stands is as follows:
+					ul
+						li
+							| App_server
+							ul
+								li Controllers
+								li Models
+								li Passport
+								li Routes
+								li Views
+						li Bin
+						li Node_modules
+						li
+							| Public
+							ul
+								li Images
+								li Javascripts
+								li Stylesheets
+						li app.js
+						li package.json
+					p
+						| This application also uses the Model-View-Controller or MVC architecture which is well suited for Node.js development as it promotes modular code and separation of concerns. An overview of MVC, with essentially is a design pattern for data driven applications, follows the following logic:
+					ol
+						li A request comes into the application
+						li The request gets routed to a controller (app_server/controller)
+						li The controller, if necessary, makes a request to the model (app_server/model)
+						li The model responds to the controller
+						li The controller sends a response to a view (app_server/view)
+						li The view sends a response to the original requester.
+					br
+					p
+						img(src='images/MVC.png', alt='Picture of MVC flow')
+					p(align='center') Figure 1: Request-response flow of a basic MVC architecture
+					p
+						| The roles and significance of each folder in the website architecture will now be further discussed.
+
+
+
+
+
+					h3 App_server:
+					p
+						| Contains all the controllers, views, routes, passport authentication and views for the entire project. This was chosen as it allows the bulk of the project to be self-contained and also mean that different app functionality such as routes, or templates could be separated in a clear, concise manner.
+					h3 Controllers:
+					p
+						| Controllers, like in any other typical MVC set up, are responsible for the business logic of the application. They process data passed by routes and then if needed query the database using models
+					h3 Models:
+					p
+						| Models are used to represents data, implements business logic and handle storage. In this app Mongoose is used to
+					h3 Views:
+					p
+						| Provides templates which are rendered and served by the routes. For this project the view engine was chosen and set to jade, as jade allows rapid development, code consistency and the ability to refer to objects passed into the render function, amongst other advantages.
+					h3 Routes:
+					p
+						| Routes are responsible for handling traffic and connecting it to the appropriate controllers, for example, if a user requests the ability to add a comment to the comments page, the job of a router would be to direct the request to the passport, which checks user authentication, if successful this is redirected createComment method of the ctrlComments.
+					h3 Passport:
+					p
+						| This directory contains all the middleware logic for supporting persistent login sessions, through the use of the passport and passport-local npm packages.&nbsp; User registration and login authentication, with thorough checking, is done and linked to a user model, via mongoose.
+					h3 Public
+					p
+						| This directory contains all of the asset files such as images, styles and JavaScript with can be called through the app. Most, if not all of the files within this directory are files that do not play any significantly roles in the logic and connectively of the application, with the exception being the game JavaScript which is linked to authentication and models (for obtaining high scores for site leader board).
+					h3 Bin
+					p
+						| A directory that simply contains all of the command-line scripts for the application
+					h3 App.js
+					p
+						| Initializes the app and glues everything in the app together i.e. the views, the routes, models etc.
+					h3 Package.json
+					p
+						| Is a standard npm file for listing app dependencies and metadata, i.e. it not only remembers all packages that the app depends on but the versions as well
+					h3 Node_modules
+					p
+						| Contains all installed dependencies in addition to further sub-required dependencies, needed to run the application. When npm install is run, all of the dependencies and their dependencies mentioned in the package.json file will be installed into this directory.
+
+
+
+
+
+					h2 Design:
+					h3 Icons and Symbols:
+					p
+						| In the design of the application two types of icons were used, namely Awesome Font icons and Bootstrap glyphicons. The awesome font was used for anything displayed directly on the webpage, whereas the glyphicons were used only for the login/register pages. The idea was the use only one style of icons, however the link required to use the bootstrap glyphicons clashed with existing CSS styles on the webpage, hence awesome fonts were used as a substitute. The difference is not noticeable, as most symbols are near identical.
+					h3 Login and Registration:
+					p
+						| It was decided that login in and registration pages would not include/extended the layout.jade, as with the majority of pages in the application. Instead they would be renders as pages with a bootstrap theme independent of the site. The reason for this is that not only does it look cleaner, it also allows the authentication and passport checking to be better maintained within the sites code. Additionally, a separation from the website content gives the feel of a more secure, portal like experience, which is aimed at building trust and ensuring users that the site is safe and that their details will be properly stored and protected. Lastly this design was set in motion as, its minimalistic design allows users to focus on the content that they are entering and thus ensures/helps reinforce the proper storage of user credentials (e.g. that they enter the right email address)
+					h3 API
+					p
+						| The initial step in designing the API was determining the type of data to store, the separation of that data and what actions we wanted to perform on it. Through this step we identified two key types of data, namely the comments that a user would leave on the page and the high scores they would set in the game.&nbsp; Intuitively then, our two intended models for mongo documents would be based on the comments and high scores. High scores would contain a user&rsquo;s high score, their username and the time they set the score, with each user having a single high score, which would be stored in the high score database. This meant the user information in the document would represent a unique field and subsequently queries made for high scores could rely on this attribute rather than the document id generated by Mongo. The comments on the other hand would not have this luxury, as a single user should be able to make multiple comments.
+					p
+						| The next step in designing the API was determining the URLs that would be required and mapping those to different HTTP requests. The way we went about this mirrors the approach used within Getting Mean [reference to getting mean], where tables were created for both data models allowing us to map out how we wanted to get the information from certain URLs as well as POST or PUT to others. In addition, the expected response codes for a successful request and a failed response were also added at this step. The tables of our API design are included below.
+					h3 API :Http Requests
+					br
+					.datagridcol5
+						table
+							thead
+								tr
+									th	Highscore
+									th 		
+									th
+									th 	Sucess Code
+									th 	Fail Code
+							tbody
+								tr
+									td  get
+									td  Get all scores
+									td  api/highscores
+									td 	200
+									td
+								tr
+									td  post
+									td  Upload scores
+									td  api/highscores
+									td 	201
+									td 	400
+								tr
+									td  get
+									td  Get single scores from user
+									td  api/highscores/:userid
+									td 	200
+									td 	404
+								tr
+									td  put
+									td  Get all scores
+									td  api/highscores/:userid
+									td 	201
+									td 	404
+
+								tr
+									td  delete
+									td  Get all scores
+									td  api/highscores/:userid
+									td 	
+									td
+					.datagridcol5
+						table
+							thead
+								tr
+									th	Comments
+									th 		
+									th
+									th 	Sucess Code
+									th 	Fail Code
+							tbody
+								tr
+									td  get
+									td  Get all comments
+									td  api/comments
+									td 	200
+									td
+								tr
+									td  post
+									td  Post a comment
+									td  api/highscores
+									td 	201
+									td 	400
+								tr
+									td  get
+									td  Get specific comment by comment Id
+									td  api/comments/:commentID
+									td 	200
+									td 	404
+								tr
+									td  put
+									td  Get all scores
+									td  api/comments/:commentID
+									td 	201
+									td 	404
+					p
+						| The last step was writing the routes for these API features. To do so, any URL that begins with /api is directed to a route file separate from the other URLs. Additionally, it uses its own controllers, which manage the data between the database and the server. The controllers export functions that map the various requirements of the API routes and leverage mongoose to communicate with the underlying mongo database and return the necessary JSON responses.
+
+
+
+
+					h2 Difficulties:
+					h3 Login and Authentication:
+					p
+						| At first authentication is a tricky concept to get one&rsquo;s head around, especially when figuring out how to tracker user actions across the whole application, on top of ensuring their details are secure and safely stored for later use. Whilst npm packages such as passport and passport-local exist, a clear understanding of how all the routing, controlling, rendering or lack of if user is not authenticated for specific areas of the website, is admitting challenging, even now that the application is running.
+					p
+						| The strategy used to overcome this challenge was to create as already mentioned a passport folder in the app_server directory. This file contained three files:
+					ul
+						li
+							strong Init
+							| : used to serialise and de-serialise users to support persistent login sessions
+						li
+							strong Login
+							| : Preforms authentication checking over user model, to ensure user exists and that for a specific user, the required passport is correct. This requires as well the ability to check that the entered password matches encryption of password (hash and salt)
+						li
+							strong Signup
+							| : Again performs authentication checks to ensure that no two usernames can be the same, that the entered password and confirmed password are the same, with appropriate error messages if either fails. If both checks pass, the user details are saved into the user collection of the chosen database.
+					p
+						| Next was the ability to control and restrict where deem necessary, what logged in could access and what non registered users could not. This required the creating of an index.js routes file, which contains a function for first checking if the user is authenticated and then a function for rendering all successful and unsuccessful get and post requests. Whilst in retrospective this task seems simple, logically, ensuring a perfect line of communication between obtaining, routing, verifying and displaying was certainly a real challenge that encompassed many hours of work. Thankfully all this was eventually figured out, and applying bootstrap to make the signup and registering process aesthetically pleasing was a lot easier.
+
+
+
+					h3 API and Authentication
+					p
+						| Adding in the API to the website after it was designed fairly straight forward for most aspects of the GET requests. It was a simple matter of using the request module within the controller and then passing information gained from that process to the view.&nbsp; The biggest issue came from how to deal with situations where the user needed to be authenticated and their POST or PUT information that was derived from their user information. The first step was preventing certain API calls from being called when a user was not authenticated or logged in, which was included in the routing for the API.
+					p
+						| The information about the user&rsquo;s login was found to be accessible within the highscore.js controller and comment.js controller. The solution at that point became effectively calling on the express session information of the user to the API controller for those calls because the required information would always be present if the user was authenticated. This mean that the user comment was the only thing required to be submitted when posting a comment and the score could be send by the game and as long as a person was authenticated to make the API call it could update their high score.
+					h3 Minimising API usage in the game.
+					p
+						| Our initial implementation of the API in the game was to call the API at the death screen. The thought process was that the death screen would be the time when information would need to be passed to the server. From watching the logs of access though the designed API, it was evident that this method introduced a lot of unnecessary data calls to the API. Rather it was decided to move most of the API calls to the initialisation of the game. This resulted in the API being called then and then being called again when it was necessary to update a high score.
+
