@@ -23,5 +23,5 @@ var commentSchema = new mongoose.Schema({
 	}
 });
 
-mongoose.model('HighScore', highscoreSchema);
 mongoose.model('Comment', commentSchema)
+mongoose.model('HighScore', highscoreSchema);
