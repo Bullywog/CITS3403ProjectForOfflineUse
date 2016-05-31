@@ -53,7 +53,7 @@ block content
 						li The view sends a response to the original requester.
 					br
 					p
-						img(src='images/mvc.png', alt='Picture of MVC flow')
+						img(src='images/MVC.png', alt='Picture of MVC flow')
 					p(align='center') Figure 1: Request-response flow of a basic MVC architecture
 					p
 						| The roles and significance of each folder in the website architecture will now be further discussed.
@@ -65,23 +65,23 @@ block content
 					h3 App_server:
 					p
 						| Contains all the controllers, views, routes, passport authentication and views for the entire project. This was chosen as it allows the bulk of the project to be self-contained and also mean that different app functionality such as routes, or templates could be separated in a clear, concise manner.
-					h3 Controllers:
-					p
+					h3.indent Controllers:
+					p.indent 
 						| Controllers, like in any other typical MVC set up, are responsible for the business logic of the application. They process data passed by routes and then if needed query the database using models
-					h3 Models:
-					p
+					h3.indent Models:
+					p.indent 
 						| Models are used to represents data, implements business logic and handle storage. In this app Mongoose is used to
-					h3 Views:
-					p
+					h3.indent Views:
+					p.indent 
 						| Provides templates which are rendered and served by the routes. For this project the view engine was chosen and set to jade, as jade allows rapid development, code consistency and the ability to refer to objects passed into the render function, amongst other advantages.
-					h3 Routes:
-					p
+					h3.indent  Routes:
+					p.indent 
 						| Routes are responsible for handling traffic and connecting it to the appropriate controllers, for example, if a user requests the ability to add a comment to the comments page, the job of a router would be to direct the request to the passport, which checks user authentication, if successful this is redirected createComment method of the ctrlComments.
-					h3 Passport:
-					p
+					h3.indent  Passport:
+					p.indent 
 						| This directory contains all the middleware logic for supporting persistent login sessions, through the use of the passport and passport-local npm packages.&nbsp; User registration and login authentication, with thorough checking, is done and linked to a user model, via mongoose.
-					h3 Public
-					p
+					h3.indent Public
+					p.indent 
 						| This directory contains all of the asset files such as images, styles and JavaScript with can be called through the app. Most, if not all of the files within this directory are files that do not play any significantly roles in the logic and connectively of the application, with the exception being the game JavaScript which is linked to authentication and models (for obtaining high scores for site leader board).
 					h3 Bin
 					p
@@ -192,7 +192,9 @@ block content
 					p
 						| The last step was writing the routes for these API features. To do so, any URL that begins with /api is directed to a route file separate from the other URLs. Additionally, it uses its own controllers, which manage the data between the database and the server. The controllers export functions that map the various requirements of the API routes and leverage mongoose to communicate with the underlying mongo database and return the necessary JSON responses.
 
-
+					h3 Socket.IO
+					p
+						| It was decided that an online, interactive and dynamic user chat system, would not be created through the use of socket.io. This was decided early on, due to the fragile nature of the express able and the likelihood of such effecting fundamental elements of the applications design. Whilst a socket chat would be a fun experience for users, the game itself is fast pace and played individually with little waiting time between game. For these very reasons it was conclude that the design of this application would not implement live chats, instead comments would be used as a primary source of communication between users.
 
 
 					h2 Difficulties:

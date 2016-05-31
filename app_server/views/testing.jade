@@ -22,4 +22,23 @@ block content
 
 					h2 Deployment of the website
 					p
-						| In order to fully deploy the website, small changes would need to be made. Notably the current references to the database are using the locally running test database. Putting this site one the world wide web would require those references to be changed to using the DBURI of an online mongodb such as the one supplied by mongolabs. &nbsp;After this the project could be pushed to a Heroku project through git, or alternatively a server on Microsoft Azure, both of which would be accessible and usable on the internet.
+						| In order to fully deploy this website, small changes had to be made to the locally run website code. Notably, previous references to the database were to the locally running test database in the mongo shell. To change this required changing these references to use the DBURI of an online mongodb such as the one supplied by mongolab, which is the chosen online database for this application.  After this the project was pushed to a Heroku project through git, allowing the project to be accessible and usable on the internet.
+					p
+						| Using mLab not only removed the load locally but allowed for more in-depth testing of each collection created and called by the heroku application. This meant that when users registered, posted a comment or played the game online, the user, comment and highscore collections could all be analysed and cross checked, ensuring that all the API’s were working correctly. An example of such testing can be seen below
+
+					p(align='center') Figure 3: mLab example of user collection containing both authors and a random user
+					p(align='center') Figure 4: mLab example of comments collection posted by both authors
+					p(align='center') Figure 5: mLab example of highscore collection set by both authors and a random user
+
+					p
+						| The final stage of testing was done using the Heroku log. This was used to located the origin of errors in the application logic and pin point exactly were these errors were encountered in the flow of information and routing. The problems encountered throughout the launch of the application, were quickly mitigated through these the use of this technique and again were cross check with results in mLab. Some sample screenshots of the heroku error messages can be seen below
+
+					p(align='center') Figure 6: Heroku error message of …..
+					p(align='center') Figure 7: Heroku error message of …..
+
+					p
+						| The final step, as with any good website was to validate the code, this was doing using #[a(href="https://jigsaw.w3.org/css-validator/") W3Schools CSS Validator]. The end result was a validation image seen below, that can also be found on the footer of every page and proves that "care was taken to create an introperable Web page".
+
+					p
+						a(href='http://jigsaw.w3.org/css-validator/check/referer')
+						img(style='width:88px;height:31px', src='http://jigsaw.w3.org/css-validator/images/vcss-blue', alt='Valid CSS!')

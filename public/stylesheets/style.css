@@ -292,7 +292,6 @@ header{
 
 /*////////////////////////////////////Login/Register/////////////////////////////////////////////*/
 
-
 .login {
   width: 400px;
   margin: 50px auto;
@@ -344,7 +343,6 @@ input:valid{
 }
 
 .form-control:focus{
-    border-color: none;
     box-shadow: none;
     -webkit-box-shadow: none;
 }
@@ -546,6 +544,15 @@ margin-top: 5px;
   font-size: 18px;
 }
 
+.design h3.indent{
+  color: black;
+  font-size: 16px;
+}
+
+.indent{
+    margin-left: 40px;
+}
+
 .blockp {
   margin-left: 50px;
   margin-right: 100px;
@@ -592,7 +599,6 @@ margin-top: 5px;
 .datagridcol5 table thead th {
   background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, black), color-stop(1, black) );
   background:-moz-linear-gradient( center top, black 5%, black 100% );
-  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='black', endColorstr='black');
   background-color:black; 
   color: white; 
   font-size: 20px; 

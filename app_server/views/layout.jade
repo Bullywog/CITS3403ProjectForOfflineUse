@@ -36,7 +36,7 @@ body
 					li
 						a(href='/references') References
 					li#signin
-						if(typeof(user)==='undefined')
+						if(typeof(user)==='undefined' )
 							a.signin(href='/signin') 		Sign in
 						else
 							a.signin(href='/signout') 		Sign out
@@ -47,5 +47,11 @@ body
 			.row
 				.col-xs-12
 					p
-						script(type="text/javascript" src="javascripts/lastModified.js")
+						script(language='javascript').
+							document.write("<i>Last updated "+document.lastModified+"<I>");
 					small CITS3401 Agile Web Design Express App
+					br
+					br
+					p
+						a(href='http://jigsaw.w3.org/css-validator/check/referer')
+						img(style='border:0;width:88px;height:31px', src='http://jigsaw.w3.org/css-validator/images/vcss-blue', alt='Valid CSS!')
