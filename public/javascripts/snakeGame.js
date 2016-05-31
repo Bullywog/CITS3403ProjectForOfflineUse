@@ -14,7 +14,7 @@ window.addEventListener("keydown", function(e) {
 } , false);
 
 var apiSettings = {
-    server: 'http://bacterialbattles.herokuapp.com'
+    server: 'http://localhost:3000'
 };
 /*Sounds structure only needed when active network connection
 Taken from [2] http://cssdeck.com/labs/classic-snake-game-with-html5-canvas*/

@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-var dbURI = 'mongodb://heroku_j6pwg93s:jcgq8t5u7tper3p10bknmr53e2@ds017688.mlab.com:17688/heroku_j6pwg93s'
+var dbURI = 'mongodb://localhost/test'
 
 var highscoredb = mongoose.connect(dbURI);
 
@@ -16,8 +16,7 @@ mongoose.connection.on('disconnected', function(){
 
 
 module.exports = {
-	//'url' : 'mongodb://<dbuser>:<dbpassword>@novus.modulusmongo.net:27017/<dbName>'
-	'url' : 'mongodb://heroku_j6pwg93s:jcgq8t5u7tper3p10bknmr53e2@ds017688.mlab.com:17688/heroku_j6pwg93s'
-}
 
+		'url' : 'mongodb://localhost/test'
+}
 require('./highscores')

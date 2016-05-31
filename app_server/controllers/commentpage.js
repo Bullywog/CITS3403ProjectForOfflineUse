@@ -1,7 +1,7 @@
 var request = require('request');
 
 var apiSettings = {
-	server: 'http://bacterialbattles.herokuapp.com'
+	server: 'http://localhost:3000'
 };
 
 var renderCommentsPage = function(req, res, responseBody){
